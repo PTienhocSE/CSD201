@@ -1,6 +1,7 @@
 package LinkedList;
 
 class Node {
+
     String task;
     boolean isFinished;
     Node next;
@@ -13,6 +14,7 @@ class Node {
 }
 
 public class ToDoList {
+
     private Node head;
 
     public ToDoList() {
@@ -32,7 +34,7 @@ public class ToDoList {
             if (current.task.equals(task)) {
                 current.isFinished = true;
                 System.out.println("Task marked as completed: " + task);
-                return;  
+                return;
             }
             current = current.next;
         }
@@ -50,7 +52,7 @@ public class ToDoList {
                     previous.next = current.next;
                 }
                 System.out.println("Task removed: " + task);
-                return;  
+                return;
             }
             previous = current;
             current = current.next;
@@ -61,9 +63,13 @@ public class ToDoList {
     public void display() {
         Node current = head;
         System.out.println("TO DO LIST:");
+        if (current == null) {
+            System.out.println("Todo list is empty.");
+            return;
+        }
         while (current != null) {
             System.out.println(current.isFinished ? "Completed: " : "In progress: " + current.task);
-            current = current.next;  
+            current = current.next;
         }
     }
 
