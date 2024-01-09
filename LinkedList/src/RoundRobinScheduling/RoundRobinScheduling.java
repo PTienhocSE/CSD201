@@ -1,20 +1,34 @@
 package RoundRobinScheduling;
 
 class Process {
-    int bursttime,processid;
+    int bursttime;
+    int processid;
+    static int count=0;
+
+    public Process(int bursttime) {
+        this.bursttime = bursttime;
+        this.processid = ++count;
+    }
+    
 }
 
 class Node {
-    int bursttime;
+    Process process;
     Node next;
 
     Node() {
     }
-
-    Node(int bursttime, Node next) {
-        this.bursttime = bursttime;
+    
+    public Node(int time,Node next){
+        this.process = new Process(time);
+        this.next=next;
+    }
+    
+    public Node(Process process, Node next) {
+        this.process = process;
         this.next = next;
-    } 
+    }
+
     
 }
 
@@ -44,7 +58,7 @@ class MyList {
     void traverse(){
         Node p =head;
         while(p!=null){
-            System.out.print(" "+p.bursttime);
+            System.out.print(" "+p.process.bursttime);
             p=p.next;
         }
 //        System.out.println();
@@ -59,47 +73,77 @@ class MyList {
         }
         return k;
     }
+    
+    void show () {
+        Node p =head;
+        int n=1,m=size();
+        while(n<=m){
+            System.out.println("Process "+p.process.processid+": "+p.process.bursttime);
+            n++;
+            p=p.next;
+        }
+    }
 }
 
-public class RoundRobinScheduling {
+public class RoundRobinScheduling extends Menu{
+    static String[] mc={"Quantum Time","Add Process","Show Process","Do Round Robin Scheduling"};
     int q;
     MyList a;
 
     public RoundRobinScheduling() {
+        super("Round Robin Scheduling",mc);
         a= new MyList();
     }
 
     public RoundRobinScheduling(int q) {
+        super("Round Robin Scheduling",mc);
         this.q = q;
         a= new MyList();
+    }
+
+    public int getQ() {
+        return q;
+    }
+
+    public void setQ(int q) {
+        this.q = q;
     }
     
     void doRoundRobin(){
         Node p =a.head;
         int time=0,n=1,m=a.size();
         while(n<=m ){
-            if(p.bursttime>q){
-                p.bursttime-=q;
+            if(p.process.bursttime>q){
+                System.out.print(time+"  ");
+                System.out.print("ID:"+p.process.processid+"  ");
+                p.process.bursttime-=q;
                 time+=q;
-                System.out.println(time);
-            }else if(p.bursttime>0){
-                time+=p.bursttime;
-                p.bursttime=0;
+            }else if(p.process.bursttime>0){
+                System.out.print(time+"  ");
+                System.out.print(p.process.processid+"  ");
+                time+=p.process.bursttime;
+                p.process.bursttime=0;
                 n++;
-                System.out.println(time);
             }
             p=p.next;
         }
         System.out.println(time);
+        System.out.println("Total: "+time);
     }
 
     public static void main(String[] args) {
-        RoundRobinScheduling x = new RoundRobinScheduling(50);
-        x.a.add(100);
-        x.a.add(200);
-        x.a.add(300);
-//        x.a.traverse();
-        x.doRoundRobin();
+        new RoundRobinScheduling().run();
+    }
+
+    @Override
+    public void execute(int ch) {
+        switch(ch){
+            case 1: q=Utils.getInt("Enter");this.setQ(q);System.out.println(this.getQ());;break;
+            case 2: a.add(Utils.getInt("Enter"));break;
+            case 3: a.show();break;
+            case 4: this.doRoundRobin();break;
+            default: System.exit(0);
+        }
     }
     
 }

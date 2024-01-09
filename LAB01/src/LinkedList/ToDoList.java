@@ -43,18 +43,17 @@ public class ToDoList {
 
     public void removeTask(String task) {
         Node current = head;
-        Node previous = null;
-        while (current != null) {
-            if (current.task.equals(task)) {
-                if (previous == null) {
-                    head = current.next;
-                } else {
-                    previous.next = current.next;
-                }
+        if (current != null && current.task.equals(task)) {
+            head = current.next;
+            System.out.println("Task removed: " + task);
+            return;
+        }
+        while (current != null && current.next != null) {
+            if (current.next.task.equals(task)) {
+                current.next = current.next.next;
                 System.out.println("Task removed: " + task);
                 return;
             }
-            previous = current;
             current = current.next;
         }
         System.out.println("Task not found: " + task);
@@ -68,7 +67,7 @@ public class ToDoList {
             return;
         }
         while (current != null) {
-            System.out.println(current.isFinished ? "Completed: " : "In progress: " + current.task);
+            System.out.println(current.isFinished ? "Completed: " +current.task : "In progress: " + current.task);
             current = current.next;
         }
     }
