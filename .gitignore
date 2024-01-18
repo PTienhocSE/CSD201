@@ -1,5 +1,9 @@
 /LAB01/build/
+<<<<<<< HEAD
 /Stack/nbproject/private/
 /Stack/build/
 /ArrayQueue/nbproject/private/
 /ArrayQueue/build/
+=======
+/Stack&Queue/nbproject/private/
+>>>>>>> b9359d63b37013c35682ffcc7ece8b6fd87bd84a
