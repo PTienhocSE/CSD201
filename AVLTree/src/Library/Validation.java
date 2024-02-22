@@ -119,4 +119,8 @@ public class Validation {
         }while(!flag);
         return Double.parseDouble(number);
     }
+    
+    public boolean checkEmail(String email){
+        return email.matches("^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+    }
 }

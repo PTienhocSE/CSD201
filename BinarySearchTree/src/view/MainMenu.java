@@ -6,7 +6,7 @@ public class MainMenu extends Menu {
     private BookView bView = new BookView();
 
     public MainMenu() {
-        super(" E-commerce Product Inventory", mc);
+        super("E-commerce Product Inventory", mc);
     }
 
     @Override

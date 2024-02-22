@@ -74,11 +74,7 @@ public class BSTree {
         if(p == null) return;
         inOrder(p.getLeft());visit(p);inOrder(p.getRight());
     }
-    
-    public void deleteByCopy(String ISBN){
-        
-    }
-    
+
     public void deleteByMerging(String ISBN){
         Node p = search(ISBN);
         if(p==null){

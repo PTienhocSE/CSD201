@@ -32,6 +32,7 @@ public class BookController {
     }
     
     public Book searchBook(String ISBN){
-        return data.search(ISBN).getInfo();
+        if(data.search(ISBN)!= null) return data.search(ISBN).getInfo();
+        else return null;
     }
 }
