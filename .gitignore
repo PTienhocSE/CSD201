@@ -7,6 +7,7 @@
 =======
 /Stack&Queue/nbproject/private/
 >>>>>>> b9359d63b37013c35682ffcc7ece8b6fd87bd84a
+<<<<<<< HEAD
 /Tree/nbproject/private/
 /BinarySearchTree/nbproject/private/
 /BinarySearchTree/build/
@@ -17,3 +18,6 @@
 /Graph/nbproject/private/
 /SolarSystemObjects/nbproject/private/
 /SolarSystemObjects/build/
+=======
+>>>>>>> 79fcc143014396d91077b621f0941019b9ec1b61
+/Tree/build/
