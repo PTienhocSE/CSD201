@@ -21,7 +21,7 @@ public class ContactController {
     }
     
     public void print(){
-        data.inOrder();
+        data.preOrder();
     }
     
     public void addContact(Contact b){

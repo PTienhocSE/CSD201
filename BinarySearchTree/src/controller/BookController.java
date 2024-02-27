@@ -19,8 +19,7 @@ public class BookController {
     }
     
     public void print(){
-        data.inOrder();
-        System.out.println("");
+        data.preOrder();
     }
     
     public void addBook(Book b){
